@@ -1,0 +1,18 @@
+--CONSTRAINT  const_name  FOREIGN KEY  (column_name) REFERENCES  foreign_table_name(foreign_table_pk)
+
+USE dUSE database_name;
+
+CREATE TABLE ARTICLE (
+    ID INT,
+    CONSTRAINT ARTICLE_ID PRIMARY KEY (ID),
+    HEADER VARCHAR(100),
+    TEXT_ARTICLE LONGTEXT,
+    CONSTRAINT AUTHOR_FK FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHOR(ID)
+);
+
+--заполнение таблиц AUTHOR & ARTICLE
+INSERT INTO AUTHOR
+VALUES(105,'Test','Test', 10, 50, 50);
+
+INSERT INTO ARTICLE
+VALUES(1,'Test herader','Test text', 105);

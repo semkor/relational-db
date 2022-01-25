@@ -1,0 +1,35 @@
+USE database_name;
+
+--удаляет последние три колонки из таблицы EMPLOYEES
+ALTER TABLE EMPLOYEES
+DROP COLUMN PHOTO,
+DROP COLUMN NOTES,
+DROP COLUMN REPORTS_TO;
+
+
+--изменяет РК таблицы SupplierID на Phone
+        -- удяляем из PRODUCTS FOREIGN KEY == SUPPLIER_FK
+        -- удяляем из SUPPLIERS текущий PRIMARY KEY
+        -- создаем новый PRIMARY KEY = PHONE
+        -- в PRODUCTS SUPPLIER_ID меняем с INT на VARCHAR
+        -- в PRODUCTS устанавливаем новый FOREIGN KEY = SUPPLIERS.PHONE
+
+ALTER TABLE PRODUCTS
+DROP FOREIGN KEY SUPPLIER_FK;
+
+ALTER TABLE SUPPLIERS
+DROP PRIMARY KEY,
+ADD CONSTRAINT SUPPLIERS_ID PRIMARY KEY (PHONE);
+
+ALTER TABLE PRODUCTS
+MODIFY SUPPLIER_ID VARCHAR(20),
+ADD CONSTRAINT SUPPLIER_FK FOREIGN KEY (SUPPLIER_ID) REFERENCES SUPPLIERS (PHONE);
+
+
+--добавляет в таблицу Customers колонки IS_ACTIVE, которая должна принимать одно из двух значений 0 или 1 и не быть пустой
+ALTER TABLE CUSTOMERS
+ADD IS_ACTIVE BOOLEAN NOT NULL;
+
+--обновите длину поля Picture в таблице Categories до 100 символов
+ALTER TABLE CATEGORIES
+MODIFY PICTURE VARCHAR(100);

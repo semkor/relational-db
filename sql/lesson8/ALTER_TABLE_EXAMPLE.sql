@@ -1,0 +1,29 @@
+USE database_name;
+
+-- добавление колонки
+    -- ALTER TABLE TABLE NAME
+    -- ADD COLUMN NAME TYPE..;
+ALTER TABLE CUSTOMER
+    ADD AGE INT;
+
+-- удаление колонки
+-- ALTER TABLE TABLE NAME
+-- DROP COLUMN COLUMN NAME;
+ALTER TABLE CUSTOMER
+DROP COLUMN AGE;
+
+-- обновление колонки
+    -- ALTER TABLE TABLE NAME
+    -- MODIFY COLUMN  NAME ....;
+ALTER TABLE CUSTOMER
+    MODIFY CUSTNAME VARCHAR(90);
+
+
+-- остальное
+ALTER TABLE CUSTOMER
+    ADD AGE INT DEFAULT 0 NOT NULL ;
+
+ALTER TABLE CUSTOMER
+    MODIFY SALESMAN_ID NOT NULL;    -- будет ошибка
+
+-- желательно не удалять колонку с PRIMERY KEY & FOREIGN KEY
